@@ -1,0 +1,63 @@
+version: "3.3"
+
+services:
+
+  mikrotik:
+    image: mikrotik
+    volumes:
+        - ./mikrotik_data:/data
+
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    ports:
+      - "2222:22"
+      #- "23:23"
+      - "81:80"
+      #- "1194:1194"
+      - "8728:8728"
+     # - "8729:8729"
+      - "8291:8291"
+     # - "5678:5678"
+     # - "8081:8080"
+     # - "6343:6343"
+     # - "5900:5900"
+#      
+#    networks:
+#      my-internal-network:
+#        driver: dhcp
+#      host-network:
+#      
+#    network_mode: "host"
+
+
+
+#    networks:
+#      mikrotik_internal:
+#        aliases:
+#          - mikrotik_internal
+#      mikrotik_external:
+#        aliases:
+#          - mikrotik_external
+#
+#networks:
+#  mikrotik_internal:
+#    driver: bridge
+#    ipam:
+#      driver: default
+#      config:
+#        - subnet: 172.16.0.0/24
+#  mikrotik_external:
+#    driver: bridge
+#    ipam:
+#      driver: default
+#      config:
+#        - subnet: 192.168.1.0/24
+
+#networks:
+#  my-internal-network:
+#    driver: dhcp
+#  host-network:
+#    external: true
